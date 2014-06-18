@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>English name of a number</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input">Enter a number between 0 and 999:  </label>
+    <input id="input" type="text" />
+    <button onclick="showName()">Show English name</button>
+    <div id="console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function showName() {
+            var number = parseInt(input.value);
+            if (isNaN(number)) {
+                jsConsole.writeLine('Invalid input!');
+            }
+            else {
+                var firstDigit = Math.floor(number / 100);
+                var secondDigit = Math.floor((number % 100) / 10);
+                var thirdDigit = Math.floor((number % 100) % 10);
+                var specialCase = false; //this variable is used later to print the names of the numbers from "ten" to "nineteen" when the second digit is "1"
+                switch (firstDigit) {
+                    case 0: break;
+                    case 1: jsConsole.write('One hundred '); break;
+                    case 2: jsConsole.write('Two hundred '); break;
+                    case 3: jsConsole.write('Three hundred '); break;
+                    case 4: jsConsole.write('Four hundred '); break;
+                    case 5: jsConsole.write('Five hundred '); break;
+                    case 6: jsConsole.write('Six hundred '); break;
+                    case 7: jsConsole.write('Seven hundred '); break;
+                    case 8: jsConsole.write('Eigth hundred '); break;
+                    case 9: jsConsole.write('Nine hundred '); break;
+                    default: jsConsole.writeLine('Invalid output'); break;
+                }
+                switch (secondDigit) {
+                    case 0: {
+                        if ((firstDigit != 0) && (thirdDigit != 0)) {
+                            jsConsole.write("and ");      //this will be printed only in numbers such as "701", "601", etc. but not in "700", "600", etc.
+                        }
+                        break;
+                    }
+                    case 1: {
+                        if ((firstDigit != 0)) {
+                            jsConsole.write("and ");    //this will not be printed if the number is lesser than "100"
+                        }
+                        specialCase = true;
+                        break;
+                    }
+                    case 2: jsConsole.write("twenty "); break;
+                    case 3: jsConsole.write("thirty "); break;
+                    case 4: jsConsole.write("fourth "); break;
+                    case 5: jsConsole.write("fifty "); break;
+                    case 6: jsConsole.write("sixty "); break;
+                    case 7: jsConsole.write("seventy "); break;
+                    case 8: jsConsole.write("eighty "); break;
+                    case 9: jsConsole.write("ninety "); break;
+                    default: jsConsole.writeLine('Invalid output'); break;
+                }
+                if (specialCase == true) {
+                    switch (thirdDigit) {
+                        case 0: jsConsole.write("ten "); break;
+                        case 1: jsConsole.write("eleven "); break;
+                        case 2: jsConsole.write("twelve "); break;
+                        case 3: jsConsole.write("thirteen "); break;
+                        case 4: jsConsole.write("fourteen "); break;
+                        case 5: jsConsole.write("fifteen "); break;
+                        case 6: jsConsole.write("sixteen "); break;
+                        case 7: jsConsole.write("seventeen "); break;
+                        case 8: jsConsole.write("eighteen "); break;
+                        case 9: jsConsole.write("nineteen "); break;
+                        default: jsConsole.writeLine('Invalid output'); break;
+                    }
+                }
+                else {
+                    switch (thirdDigit) {
+                        case 0: {
+                            if ((firstDigit == 0) && (secondDigit == 0)) {
+                                jsConsole.write("zero");      // if the entered number is "0"
+                            }
+                            break;
+                        }
+                        case 1: jsConsole.write("one "); break;
+                        case 2: jsConsole.write("two "); break;
+                        case 3: jsConsole.write("three "); break;
+                        case 4: jsConsole.write("four "); break;
+                        case 5: jsConsole.write("five "); break;
+                        case 6: jsConsole.write("six "); break;
+                        case 7: jsConsole.write("seven "); break;
+                        case 8: jsConsole.write("eight "); break;
+                        case 9: jsConsole.write("nine "); break;
+                        default: jsConsole.writeLine('Invalid output'); break;
+                    }
+                }
+                jsConsole.writeLine('')
+            }
+        }
+    </script>
+</body>
+</html>

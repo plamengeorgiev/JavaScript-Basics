@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Find the youngest person</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function copyObject(obj) {
+            if (obj == null || "Object" != typeof obj) {
+                return obj;
+            }
+
+            if (obj instanceof Array) {
+                var copy = [];
+                for (var i = 0 ; i < obj.length ; i++) {
+                    copy[i] = copyObject(obj[i]);
+                }
+                return copy;
+            }
+
+            if (obj instanceof Object) {
+                var copy = {};
+                for (var attr in obj) {
+                    if (obj.hasOwnProperty(attr)) {
+                        copy[attr] = clone(obj[attr]);
+                    }
+                }
+                return copy;
+            }
+        }
+
+        function findYoungestPerson(arr) {
+            var youngestPersonIndex = 0;
+            var youngestPersonAge = 20000000000000000000;
+
+            for (var i in arr) {
+                if (arr[i].age < youngestPersonAge) {
+                    youngestPersonAge = arr[i].age;
+                    youngestPersonIndex = i;
+                }
+            }
+            return copyObject(arr[youngestPersonIndex]);
+        }
+
+        function test() {
+            var persons = [
+             { firstname: "Gosho", lastname: "Petrov", age: 32 },
+             { firstname: "Bay", lastname: "Ivan", age: 81 },
+             { firstname: "Ivan", lastname: "Petrov", age: 31 },
+             { firstname: "Bay", lastname: "Gosho", age: 82 },
+             { firstname: "Gosho", lastname: "Ivanov", age: 30 }];
+            var youngestPerson = findYoungestPerson(persons);
+            jsConsole.write('The youngest person in the given array is: ')
+            jsConsole.writeLine(youngestPerson.firstname + ' ' + youngestPerson.lastname);
+        }
+
+        test();
+    </script>
+</body>
+</html>

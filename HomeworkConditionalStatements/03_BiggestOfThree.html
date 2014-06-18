@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>The biggest of three</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="first">First number: </label>
+    <input id="first" type="text" />
+    <label for="second">Second number: </label>
+    <input id="second" type="text" />
+    <label for="third">Third number: </label>
+    <input id="third" type="text" />
+    <button onclick="findBiggest()">Find the biggest integer</button>
+    <div id="console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function findBiggest() {
+            var value1 = parseInt(first.value);
+            var value2 = parseInt(second.value);
+            var value3 = parseInt(third.value);
+            if ((isNaN(value1) || isNaN(value2)) || isNaN(value3)) {
+                jsConsole.writeLine('Invalid input!');
+            }
+            else {
+                if ((value1 == value2) && (value1 == value3)) {
+                    jsConsole.writeLine("The numbers are equal");
+                }
+                else {
+                    if (value1 >= value2)       //this guarantees an output even if value1 and value 2 are equal
+                    {
+                        if (value1 > value3) {
+                            jsConsole.writeLine("The biggest number is " + value1);
+                        }
+                        else {
+                            jsConsole.writeLine("The biggest number is " + value3);
+                        }
+                    }
+                    if (value2 > value1) {
+                        if (value2 > value3) {
+                            jsConsole.writeLine("The biggest number is " + value2);
+                        }
+                        else {
+                            jsConsole.writeLine("The greatest number is " + value3);
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

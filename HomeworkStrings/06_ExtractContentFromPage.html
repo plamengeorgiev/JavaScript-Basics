@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Extract content from HTML page</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function extractContent(text) {
+            return text.replace(/<(.*?)>/ig, "");
+        }
+
+        function test() {
+            var text = '<html><head><title>Sample site</title></head><body><div>text<div>more text</div>and more...</div>in body</body></html>';
+            jsConsole.writeLine(extractContent(text));
+        }
+        test();
+    </script>
+
+</body>
+</html>

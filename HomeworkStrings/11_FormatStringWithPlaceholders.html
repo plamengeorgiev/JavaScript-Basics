@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Format string with placeholders</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+
+        function stringFormat() {
+            var argLength = arguments.length;
+            if (argLength < 1) {
+                return "";
+            }
+            else if (argLength == 1) {
+                return arguments[0].toString();
+            }
+            else if (argLength > 31) {
+                jsConsole.writeLine('Invalid number of arguments')
+            }
+            else {
+                var str = arguments[0]
+                var regEx = new RegExp("{\\s*(\\d){1,2}\\s*}", "g");
+                var match = str.match(regEx);
+
+                if (match != null && match.length == arguments.length - 1) {
+                    if (match[0][1] != 0) return false;
+                    else {
+
+                        // replace the placeholders
+                        for (var i = 0; i < match.length; i++) {
+                            str = str.replace(match[i], arguments[i + 1]);
+                        }
+
+                        return str;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        function test() {
+            var string = 'test {0} {1} {2} {3} {4} {5}!';
+            var person = {
+                name: 'gosho',
+                years: 35
+            }
+            jsConsole.writeLine(string);
+            jsConsole.writeLine(stringFormat(string, "Pesho", 2, undefined, 3.14, person.name, person.years));
+        }
+
+        test();
+    </script>
+</body>
+</html>

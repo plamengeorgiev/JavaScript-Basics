@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Reverse digits</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="string">Enter string:</label>
+    <input type="text" id="string" />
+    <button onclick="buttonClicked()">Reverse</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function reverseString(input) {
+            var newStr = '';
+            var len = input.length - 1;
+            for (var i = len; i >= 0; i--) {
+                newStr += input[i];
+            }
+
+            return newStr;
+        }
+        function buttonClicked() {
+            var inputString = string.value;
+            jsConsole.writeLine(reverseString(inputString));
+        }
+    </script>
+</body>
+</html>

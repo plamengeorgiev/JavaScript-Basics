@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Number reper</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="arrayInput">Enter array elements, separated by space:</label>
+    <input type="text" id="arrayInput" />
+    <label for="elementInput">Enter element:</label>
+    <input type="text" id="elementInput" />
+    <button onclick="buttonClicked()">Calculate repetitions</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function countRepetitions(array, element) {
+            var counter = 0;
+            for (var i = 0, len = array.length; i < len; i++) {
+                if (array[i] == element) {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+
+        function buttonClicked() {
+            var array = arrayInput.value.split(' ');
+            var element = parseInt(elementInput.value);
+            jsConsole.writeLine('The entered array is: ' + array);
+            jsConsole.writeLine('Element ' + element + ' is found ' + countRepetitions(array, element) + ' times in the array');
+
+        }
+    </script>
+</body>
+</html>

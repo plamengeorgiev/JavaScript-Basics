@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Most frequent number</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script>
+        var array = [4, 1, 1, 4, 2, 3, 4, 4, 1, 2, 4, 9, 3];
+
+        PrintArray(array);
+        var maxCount = 0;
+        var counter = 0;
+        var element = 0;
+        for (var i = 0, len = array.length; i < len; i++) {
+            for (var j = i; j < len; j++) {
+                if (array[i] == array[j]) {
+                    counter++;
+
+                }
+            }
+            if (counter > maxCount) {
+                maxCount = counter;
+                element = array[i];
+            }
+            counter = 0;
+        }
+
+        jsConsole.writeLine('The most frequent element is: ' + element + ' (' + maxCount + ' times)');
+    </script>
+</body>
+</html>

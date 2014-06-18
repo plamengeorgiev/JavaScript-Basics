@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>The greatest of five integers</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="first">First number: </label>
+    <input id="first" type="text" />
+    <label for="second">Second number: </label>
+    <input id="second" type="text" />
+    <label for="third">Third number: </label>
+    <input id="third" type="text" />
+    <label for="fourth">Fourth number: </label>
+    <input id="fourth" type="text" />
+    <label for="fifth">Fifth number: </label>
+    <input id="fifth" type="text" />
+    <button onclick="findGreatest()">Find the greatest integer</button>
+    <div id="console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function findGreatest() {
+            var value1 = parseInt(first.value);
+            var value2 = parseInt(second.value);
+            var value3 = parseInt(third.value);
+            var value4 = parseInt(fourth.value);
+            var value5 = parseInt(fifth.value);
+            if ((((isNaN(value1) || isNaN(value2)) || isNaN(value3)) || isNaN(value4)) || isNaN(value5)) {
+                jsConsole.writeLine('Invalid input!');
+            }
+            else {
+                var greatest = value1;
+                if (value2 > greatest) {
+                    greatest = value2;
+                }
+                if (value3 > greatest) {
+                    greatest = value3;
+                }
+                if (value4 > greatest) {
+                    greatest = value4;
+                }
+                if (value5 > greatest) {
+                    greatest = value5;
+                }
+                jsConsole.writeLine('The greatest integer number is: ' + greatest);
+            }
+            
+        }
+    </script>
+</body>
+</html>

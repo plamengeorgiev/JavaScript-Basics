@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Data Types And Variables</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console" class="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        <!-- task 1 - Assign all the possible JavaScript literals to different variables.-->
+        var intVariable = 42;
+        var floatVariable = 3.14159;
+        var charVariable = 'y';
+        var strVariable = 'ninja';
+        var boolVariable = true;
+    </script>
+    <script>
+        <!-- task 2 - Create a string variable with quoted text in it. For example: 'How you doin'?', Joey said.-->
+        var quotedTextVariable = "'How you doin'?', Joey said.";
+        jsConsole.writeLine(quotedTextVariable);
+        jsConsole.writeLine('-------------------------');
+    </script>
+    <script>
+        <!-- task 3 - Try typeof on all variables you created.-->
+        jsConsole.write(intVariable + ": ");
+        jsConsole.writeLine(typeof intVariable);
+        jsConsole.write(floatVariable + ": ");
+        jsConsole.writeLine(typeof floatVariable);
+        jsConsole.write(charVariable + ": ");
+        jsConsole.writeLine(typeof charVariable);
+        jsConsole.write(strVariable + ": ");
+        jsConsole.writeLine(typeof strVariable);
+        jsConsole.write(boolVariable + ": ");
+        jsConsole.writeLine(typeof boolVariable);
+        jsConsole.write(quotedTextVariable + ": ");
+        jsConsole.writeLine(typeof quotedTextVariable);
+        jsConsole.writeLine('-------------------------');
+    </script>
+    <script>
+        <!-- task 4 - Create null, undefined variables and try typeof on them.-->
+        var nullVariable = null;
+        var undefinedVariable = undefined;
+        jsConsole.write(nullVariable + ": ");
+        jsConsole.writeLine(typeof nullVariable);
+        jsConsole.write(undefinedVariable + ": ");
+        jsConsole.writeLine(typeof undefinedVariable);
+    </script>
+
+</body>
+</html>

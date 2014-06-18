@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Circle And Rectangle</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="coordX">X coordinate:</label>
+    <input type="text" id="coordX" />
+    <label for="coordY">Y coordinate:</label>
+    <input type="text" id="coordY" />
+    <button onclick="clicked()">Check</button>
+    <div id="js-console" class="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function clicked() {
+            var x = parseInt(coordX.value);
+            var y = parseInt(coordY.value);
+            // input validation
+            if (isNaN(x) || isNaN(y)) {
+                jsConsole.writeLine('Invalid Number!');
+            }
+            else {
+                var inCircle = (((x - 1) * (x - 1)) + ((y - 1) * (y - 1)) <= (3 * 3));
+                var inRectangleX = ((x >= -1) && (x <= 5));
+                var inRectangleY = ((y >= -1) && (y <= 1));
+                var inRectangle = inRectangleX && inRectangleY;
+                if ((inCircle == true) && (inRectangle == false)) {
+                    jsConsole.writeLine('The point a(' + x + ',' + y + ') is in the circle K(1,1,3) and outside the rectangle');
+                }
+                if ((inCircle == true) && (inRectangle == true)) {
+                    jsConsole.writeLine('The point a(' + x + ',' + y + ') is in the circle K(1,1,3) but not outside the rectangle');
+                }
+                if ((inCircle == false) && (inRectangle == false)) {
+                    jsConsole.writeLine('The point a(' + x + ',' + y + ') is outside the rectangle, but not in the circle K(1,1,3)');
+                }
+                if ((inCircle == false) && (inRectangle == true)) {
+                    jsConsole.writeLine('The point a(' + x + ',' + y + ') is out of the circle K(1,1,3) and in the rectangle');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

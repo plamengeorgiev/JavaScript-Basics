@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Selection Sort</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script>
+        var array = [3, 234, 5345, 234, 345, 0, -2344, 345, 345, 5, 32, 4, 532];
+
+        PrintArray(array);
+        function selectionSort(array) {
+            var min = array[0];
+            var temp = 0;
+            for (var i = 0, len = array.length ; i < len; i++) {
+                for (var j = i; j < len; j++) {
+                    if (parseInt(array[j]) < parseInt(array[i])) {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+            return array;
+        }
+
+        jsConsole.writeLine("The sorted array:");
+        array = selectionSort(array);
+        PrintArray(array);
+    </script>
+</body>
+</html>

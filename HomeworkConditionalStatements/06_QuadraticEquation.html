@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Quadratic equation</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="first">Coefficient a: </label>
+    <input id="first" type="text" />
+    <label for="second">Coefficient b: </label>
+    <input id="second" type="text" />
+    <label for="third">Coefficient c: </label>
+    <input id="third" type="text" />
+    <button onclick="findRoots()">Find the roots</button>
+    <div id="console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function findRoots() {
+            var a = parseFloat(first.value);
+            var b = parseFloat(second.value);
+            var c = parseFloat(third.value);
+            if ((isNaN(a) || isNaN(b)) || isNaN(c)) {
+                jsConsole.writeLine('Invalid input!');
+            }
+            else {
+                var d = b * b - 4 * a * c;
+                var x1;
+                var x2;
+                if (a != 0) {
+                    if (d > 0) {
+                        x1 = (-b + Math.sqrt(d)) / (2 * a);
+                        x2 = (-b - Math.sqrt(d)) / (2 * a);
+                        jsConsole.writeLine('The quadratic equation '+a+'x^2+'+b+'x+'+c+'=0 has two real roots:'+x1+' and '+x2);
+                    }
+                    if (d < 0) {
+                        jsConsole.writeLine('The quadratic equation ' + a + 'x^2+' + b + 'x+' + c + '=0 has no real roots');
+                    }
+                    if (d == 0) {
+                        x1 = -b / (2 * a);
+                        jsConsole.writeLine('The quadratic equation ' + a + 'x^2+' + b + 'x+' + c + '=0 has one real root: ' + x1);
+                    }
+                }
+                else if (b != 0) {
+                    jsConsole.writeLine('Coefficient a=0. The equasion is linear and has only one root: ' + -c / b);
+                }
+                else if (b == 0) {
+                    jsConsole.writeLine('Invalid input!');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

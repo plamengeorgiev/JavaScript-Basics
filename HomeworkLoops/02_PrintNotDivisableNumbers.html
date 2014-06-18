@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Print not divisable numbers</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input">Enter a number N:</label>
+    <input id="input" type="text" />
+    <button onclick="printNotDivisable()">Print not divisable numbers [1, N]</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function printNotDivisable() {
+            var n = parseInt(input.value);
+            if (isNaN(n)) {
+                jsConsole.writeLine('Invalid input');
+            }
+            else {
+                for (var i = 1; i <= n; i++) {
+                    if (i % 3 == 0 && i % 7 == 0) {
+                        continue;
+                    }
+                    jsConsole.write(i + ' ');
+                }
+                jsConsole.writeLine();
+            }
+        }
+    </script>
+</body>
+</html>

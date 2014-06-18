@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Remove element with a given value from array</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        Array.prototype.remove = function (value) {
+            var newArr = [];
+            for (var i in this) {
+                if (this[i] !== value) {
+                    newArr.push(this[i]);
+                }
+            }
+            return newArr;
+
+        }
+
+        function test() {
+            var arr = [1, 2, 1, 4, 1, 3, 4, 1, 111, 3, 2, 1, '1'];
+            jsConsole.writeLine(arr);
+            var finalArr = arr.remove(1);
+            for (var i in finalArr) {
+                if (typeof finalArr[i] == 'function') {
+                    continue;
+                }
+                else {
+                    jsConsole.write(finalArr[i] + ' ');
+                }
+            }
+        }
+        test();
+    </script>
+</body>
+</html>

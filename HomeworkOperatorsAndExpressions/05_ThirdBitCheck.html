@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Third Bit Check</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="number">Enter a number:</label>
+    <input type="text" id="number" />
+    <button onclick="checkThirdBit()">Check Third Bit</button>
+    <div id="js-console" class="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function checkThirdBit() {
+            var value = parseInt(number.value);
+            // input validation
+            if (isNaN(value)) {
+                jsConsole.writeLine('Invalid Number!');
+            }
+            else {
+                var mask = 1 << 3;
+                var valueAndMask = value & mask;
+                var bit = valueAndMask >> 3;
+                jsConsole.writeLine('The third bit of the entered number is: ' + bit);
+
+            }
+        }
+    </script>
+</body>
+</html>

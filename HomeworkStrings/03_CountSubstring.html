@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Count substrings</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="textInput">Enter text:</label>
+    <input type="text" id="textInput" />
+    <label for="substringInput">Enter a substring:</label>
+    <input type="text" id="substringInput" />
+    <button onclick="buttonClicked()">Count substrings</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function countSubstr(text, subStr) {
+            var count = 0;
+            var text = text.toLowerCase();
+            var index = 0;
+            while (index >= 0) {
+                index = text.indexOf(subStr.toLowerCase());
+                if (index != -1) {
+                    count++;
+                }
+                text = text.substring(index + subStr.length, text.length - 1);
+            }
+            return count;
+        }
+
+        function test() {
+            var text = textInput.value;
+            var subStr = substringInput.value;
+            var result = countSubstr(text, subStr);
+            jsConsole.writeLine('The result is :' + result);
+        }
+
+        test();
+
+    </script>
+</body>
+</html>

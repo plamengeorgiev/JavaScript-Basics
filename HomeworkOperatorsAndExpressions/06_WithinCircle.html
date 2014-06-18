@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Within a Circle</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="coordX">X coordinate:</label>
+    <input type="text" id="coordX" />
+    <label for="coordY">Y coordinate:</label>
+    <input type="text" id="coordY" />
+    <button onclick="checkIsWithin()">Check is within</button>
+    <div id="js-console" class="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function checkIsWithin() {
+            var x = parseInt(coordX.value);
+            var y = parseInt(coordY.value);
+            // input validation
+            if (isNaN(x) || isNaN(y)) {
+                jsConsole.writeLine('Invalid Number!');
+            }
+            else {
+                var result = (x*x) +(y*y) <= 5*5;
+                if (result==true) {
+                    jsConsole.writeLine('The point [' + x + ',' + y + '] is within the circle K(0,5)');
+                }
+                else {
+                    jsConsole.writeLine('The point [' + x + ',' + y + '] is outside the circle K(0,5)');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

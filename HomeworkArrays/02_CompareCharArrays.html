@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Compare two char arrays</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script>
+        var charArrOne = ['d', 'r', 'z', 'i', 'w', 'q', 'z', 'i', 'w', 'q', 'k', 'f'];
+        var charArrTwo = ['d', 'r', 'y', 'i', 'w', 'q', '2', '9', 'k', 'f'];
+
+        jsConsole.writeLine('The first char array: ');
+        PrintArray(charArrOne);
+        jsConsole.writeLine('The second char array: ');
+        PrintArray(charArrTwo);
+        if (charArrOne.length<charArrTwo.length) {
+            jsConsole.writeLine('The first array is before the second array!');
+        }
+        else if (charArrOne.length>charArrTwo.length) {
+            jsConsole.writeLine('The second array is before the first array!')
+        }
+        else {
+            var equal = true;
+            for (var i = 0; i < charArrOne.length; i++) {
+                if (charArrOne[i] == charArrTwo[i]) {
+                    continue;
+                }
+                else {
+                    equal = false;
+                    if (charArrOne[i] < charArrTwo[i]) {
+                        jsConsole.writeLine('The first array is before the second array!');
+                        break;
+                    }
+                    else {
+                        jsConsole.writeLine('The second array is before the first array!');
+                        break;
+                    }
+                }
+            }
+            if (equal == true) {
+                jsConsole.writeLine('The arrays are equal!')
+            }
+        }
+    </script>
+</body>
+</html>

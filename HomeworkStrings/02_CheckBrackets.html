@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Reverse digits</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="string">Enter expression to be checked:</label>
+    <input type="text" id="string" />
+    <button onclick="buttonClicked()">Check</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function checkBrackets(expression) {
+            var counter = 0;
+            for (var i = 0; i < expression.length; i++) {
+                if (expression[i] == '(') {
+                    counter++;  //increasing the counter if an opening bracket is found
+                }
+                if (expression[i] == ')') {
+                    counter--;  //decreasing the counter if a closing bracket is found
+                }
+                if (counter < 0) {
+                    jsConsole.writeLine("The expression is wrong!");
+                    break;
+                }
+            }
+            if (counter == 0) {
+                jsConsole.writeLine("The expression is right");
+            }
+            if (counter > 0) {
+                jsConsole.writeLine("The expression is wrong!");
+            }
+        }
+        function buttonClicked() {
+            var expression = string.value;
+            jsConsole.writeLine(checkBrackets(expression));
+        }
+    </script>
+</body>
+</html>

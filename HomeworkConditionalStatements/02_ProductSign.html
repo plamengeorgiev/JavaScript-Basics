@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Greater integer number</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="first">First number: </label>
+    <input id="first" type="text" />
+    <label for="second">Second number: </label>
+    <input id="second" type="text" />
+    <label for="third">Third number: </label>
+    <input id="third" type="text" />
+    <button onclick="findSign()">Find the sign of the product</button>
+    <div id="console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function findSign() {
+            var firstNum = parseFloat(first.value);
+            var secondNum = parseFloat(second.value);
+            var thirdNum = parseFloat(third.value);
+            if ((isNaN(firstNum) || isNaN(secondNum))|| isNaN(thirdNum)) {
+                jsConsole.writeLine('Invalid input!');
+            }
+            else {
+                if ((firstNum==0 || secondNum==0)|| thirdNum==0) {
+                    jsConsole.writeLine('The product is 0')
+                }
+                else {
+                    var countNegative = 0;
+                    if (firstNum<0) {
+                        countNegative++;
+                    }
+                    if (secondNum<0) {
+                        countNegative++;
+                    }
+                    if (thirdNum<0) {
+                        countNegative++;
+                    }
+                    if (countNegative==1 || countNegative==3) {
+                        jsConsole.writeLine('The sign of the product is "-"');
+                    }
+                    else {
+                        jsConsole.writeLine('The sign of the product is "+"');
+                    }
+                }
+                
+            }
+        }
+    </script>
+</body>
+</html>

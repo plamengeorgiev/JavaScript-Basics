@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Parse URL</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function parseURL(url) {
+            var parser = document.createElement('a');
+            parser.href = url;
+            var obj = {
+                protocol: parser.protocol,
+                server: parser.hostname,
+                resource: parser.pathname
+            }
+            return obj;
+        }
+
+        function test() {
+            var url = 'http://www.devbg.org/forum/index.php';
+            var JSONObj = parseURL(url);
+            for (var prop in JSONObj) {
+                jsConsole.writeLine(JSONObj[prop]);
+            }
+        }
+        test();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Maximal increasing sequence</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script>
+        var array = [1, 5, 2, 5, 6, 7, 1, 1, 1, 4, 5, 6, 9, 3, 2];
+        var endIndex = 0;
+        var maxLength = 0;
+        var counter = 1;
+        for (var i = 0, len = array.length; i < len; i++) {
+            if (array[i] < array[i + 1]) {
+                counter++;
+            }
+            if ((array[i] >= array[i + 1]) || (i + 1 == len - 1))  //checks if the end of the array is reached
+            {
+                if (counter > maxLength) {
+                    if (i + 1 == len - 1) {
+                        endIndex = i + 1;
+                    }
+                    else {
+                        endIndex = i;
+                    }
+                    maxLength = counter;
+                    counter = 1;
+                }
+            }
+        }
+
+        PrintArray(array);
+        var startIndex = endIndex - maxLength + 1;  //calculating the start index
+        for (var i = startIndex; i <= endIndex; i++)    //printing the sequence
+        {
+            jsConsole.write(array[i] + ' ');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Third Digit Check</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="number">Enter a number:</label>
+    <input type="text" id="number" />
+    <button onclick="checkThirdDigit()">Check Third Digit</button>
+    <div id="js-console" class="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function checkThirdDigit() {
+            var a = parseInt(number.value);
+            // input validation
+            if (isNaN(a)) {
+                jsConsole.writeLine('Invalid Number!');
+            }
+            else {
+                var digit = Math.floor((a / 100) % 10);
+                if (digit==7) {
+                    jsConsole.writeLine('The third digit (right-to-left) is 7');
+                }
+                else {
+                    jsConsole.writeLine('The third digit (right-to-left) is not 7');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

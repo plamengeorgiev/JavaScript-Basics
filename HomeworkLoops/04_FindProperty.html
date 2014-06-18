@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>English name of a number</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <button onclick="findElements()">Find elements</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function findElements() {
+            var arr = [];
+            for (var property in document) {
+                arr.push(property);
+            }
+
+            arr.sort();
+            jsConsole.writeLine('The smallest property in document:');
+            jsConsole.writeLine(arr[0]);//lexicographically smallest - the first element
+            jsConsole.writeLine('The biggest property in document:');
+            jsConsole.writeLine(arr[arr.length - 1]); //lexicographically largest - the last element
+            arr = [];
+            for (var property in window) {
+
+                arr.push(property);
+            }
+
+            arr.sort();
+            jsConsole.writeLine('The smallest property in window:');
+            jsConsole.writeLine(arr[0]);
+            jsConsole.writeLine('The biggest property in window:');
+            jsConsole.writeLine(arr[arr.length - 1]);
+            arr = [];
+            for (var property in navigator) {
+
+                arr.push(property);
+            }
+
+            arr.sort();
+            jsConsole.writeLine('The smallest property in navigator:');
+            jsConsole.writeLine(arr[0]);
+            jsConsole.writeLine('The biggest property in navigator:');
+            jsConsole.writeLine(arr[arr.length - 1]);
+        }
+    </script>
+</body>
+</html>

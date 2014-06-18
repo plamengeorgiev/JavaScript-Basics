@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Maximal sequence of equal elements</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script>
+        var array = [1, 1, 2, 5, 6, 4, 4, 1, 1, 1, 1, 1, 6, 7, 7, 7, 8, 3];
+        var maxLength = 0;
+        var counter = 1;
+        var element = 0;
+        for (var i = 0, len = array.length; i < len; i++) {
+            if (array[i] == array[i + 1]) {
+                counter++;
+            }
+            if ((array[i] != array[i + 1]) || (i + 1 == len - 1))  //checks if the end of the array is reached
+            {
+                if (counter > maxLength) {
+                    maxLength = counter;
+                    element = array[i];
+                }
+                counter = 1;
+            }
+        }
+
+        PrintArray(array);
+        jsConsole.writeLine('The maximal sequence of equals: ');
+        for (var i = 0; i < maxLength; i++) {
+            jsConsole.write(element + ' ');
+        }
+
+        jsConsole.writeLine();
+    </script>
+</body>
+</html>

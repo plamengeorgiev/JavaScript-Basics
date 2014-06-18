@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Odd Or Even</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="number">Enter a number:</label>
+    <input type="text" id="number" />
+    <button onclick="checkOddOrEven()">Check Odd Or Even</button>
+    <div id="js-console" class="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function checkOddOrEven() {
+            var a = parseInt(number.value);
+            // input validation
+            if (isNaN(a)) {
+                jsConsole.writeLine('Invalid Number!');
+            }
+            else {
+                //check odd or even
+                if (a % 2 == 0) {
+                    jsConsole.writeLine('The number is even!');
+                }
+                else {
+                    jsConsole.writeLine('The number is odd!');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

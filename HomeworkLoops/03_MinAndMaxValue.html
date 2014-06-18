@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Min and max value</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        (function findMinMax() {
+            var n = parseInt(prompt('How much integers would you like to enter?', 5));
+            var arr = [];
+            var checker = 0;
+            var counter = 0;
+            while (counter<n) {
+                checker=parseInt(prompt('Enter a number:', 0));
+                if (isNaN(checker)) {
+                    alert('Invalid number');
+                }
+                else {
+                    arr[counter] = checker;
+                    counter++;
+                }
+            }
+            var min = 1000000000000000000000000000000000000;
+            var max = -1000000000000000000000000000000000000;
+
+            for (var i = 0; i < n; i++) {
+                if (arr[i] < min) {
+                    min = arr[i];
+                }
+                if (arr[i] > max) {
+                    max = arr[i];
+                }
+            }
+            jsConsole.writeLine('Min value = ' + min);
+            jsConsole.writeLine('Max value = ' + max);
+        })();
+    </script>
+</body>
+</html>

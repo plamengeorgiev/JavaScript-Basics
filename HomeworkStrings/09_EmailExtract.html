@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Extract Email</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function findEmailAddresses(StrObj) {
+            var emailsArray = StrObj.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+            return emailsArray;
+        }
+
+        function test() {
+            var text = 'Here we have an email - IvanIvanov@abv.bg,  some more - pepito@gmail.com and one more pesho.peshev@gmail.com'
+            var arrayOfMails = findEmailAddresses(text);
+            for (var mail in arrayOfMails) {
+                jsConsole.writeLine(arrayOfMails[mail]);
+            }
+        }
+        test();
+
+    </script>
+</body>
+</html>

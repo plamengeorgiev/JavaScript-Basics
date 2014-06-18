@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Group persons</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function hasProperty(obj, property) {
+            for (var i in obj) {
+                if (i == property) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function group(arr, property) {
+            var key;
+            switch (property) {
+                case 'firstName': {
+                    key = 'firstName'
+                    break;
+                }
+                case 'lastName': {
+                    key = 'lastName'
+                    break;
+                }
+                case 'age': {
+                    key = 'age'
+                    break;
+                }
+                default: {
+                    jsConsole.writeLine('Invalid property');
+                    break;
+                }
+            }
+            var groupedByKey = {};
+
+            for (var person in arr) {
+                if (hasProperty(groupedByKey, arr[person][key])) {
+                    groupedByKey[arr[person][key]].push(arr[person]);
+                }
+                else {
+                    groupedByKey[arr[person][key]] = [];
+                    groupedByKey[arr[person][key]].push(arr[person]);
+                }
+            }
+            return groupedByKey;
+        }
+
+        function printPerson(person) {
+            for (var property in person) {
+                jsConsole.write(person[property].firstName + ' ' + person[property].lastName +' '+ person[property].age);
+                jsConsole.writeLine();
+            }
+            jsConsole.writeLine('--------------------------------------------');
+        }
+
+        function test() {
+            var persons = [
+            { firstName: 'Gosho', lastName: 'Petrov', age: 32 },
+            { firstName: 'Bay', lastName: 'Ivan', age: 81 },
+            { firstName: 'Bay', lastName: 'Stoyan', age: 67 },
+            { firstName: 'Bay', lastName: 'Petrov', age: 67 },
+            { firstName: 'Bay', lastName: 'Dragan', age: 81 }
+            ];
+            var result = group(persons, 'age');
+            for (var obj in result) {
+                printPerson(result[obj]);
+            }
+        }
+        test();
+    </script>
+</body>
+</html>

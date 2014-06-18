@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Check for property</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function hasProperty(obj, property) {
+            for (var i in obj) {
+                if (i === property) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function test() {
+            var firstObject = {
+                firstName: 'Pesho',
+                lastName: 'Peshev',
+                age: 21,
+                getFullName: function () { return this.firstName + ' ' + this.lastName; }
+            }
+
+            var hasProp = hasProperty(firstObject, 'lastName');
+            jsConsole.writeLine(hasProp);
+        }
+        test();
+    </script>
+</body>
+</html>

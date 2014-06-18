@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Binary search</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+
+</head>
+<body>
+    <label for="binKey">Enter key:</label>
+    <input type="text" id="binKey" />
+    <button onclick="binSearch()">Binary search</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script>
+        function binSearch() {
+            var key = parseInt(binKey.value);
+            if (isNaN(key)) {
+                jsConsole.writeLine('invalid input!');
+            }
+            else {
+                var array = [123, 34, 123, 726, 32, 2, 5, 7, 8, 9, 3, 45];
+                array = selectionSort(array);
+                PrintArray(array);
+                var result = binarySearch(array, key, 0, array.length - 1); //see "scripts/functions.js"
+                if (result == -1) {
+                    jsConsole.writeLine('The given element could not be found in the array!');
+                }
+                else {
+                    jsConsole.writeLine('The index of the given element is: ' + result);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Working with shapes</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function createPoint(xCoord, yCoord) {
+            return {
+                xCoordinate: xCoord,
+                yCoordinate: yCoord,
+                toString: function () { return '(' + this.xCoordinate + ',' + this.yCoordinate + ')'; }
+            }
+        }
+
+        function createLine(pointOne, pointTwo) {
+            return {
+                startPointX: pointOne.xCoordinate,
+                startPointY: pointOne.yCoordinate,
+                endPointX: pointTwo.xCoordinate,
+                endPointY: pointTwo.yCoordinate,
+                length: Math.sqrt((pointOne.xCoordinate - pointTwo.xCoordinate) * (pointOne.xCoordinate - pointTwo.xCoordinate) +
+                                    (pointOne.yCoordinate - pointTwo.yCoordinate) * (pointOne.yCoordinate - pointTwo.yCoordinate)),
+                toString: function () { return '(P1' + pointOne.toString() + ', P2' + pointTwo.toString() + ')'; }
+            }
+        }
+
+        function canFormTriangle(lineOne, lineTwo, lineThree) {
+            if ((lineOne.length >= (lineTwo.length + lineThree.length)) ||
+                (lineTwo.length >= (lineOne.length + lineThree.length)) ||
+                (lineThree.length >= (lineOne.length + lineTwo.length))) {
+                return false;
+            }
+            return true;
+        }
+
+        function test() {
+            var pointOne = createPoint(4, 9);
+            var pointTwo = createPoint(4, 7);
+            var pointThree = createPoint(5, 1);
+            var pointFour = createPoint(1, 1);
+            var pointFive = createPoint(6, 2);
+            var pointSix = createPoint(1, 2);
+
+
+            var lineOne = createLine(pointOne, pointTwo);
+            var lineTwo = createLine(pointThree, pointFour);
+            var lineThree = createLine(pointFive, pointSix);
+
+            jsConsole.writeLine('The length of the three lines: ');
+            jsConsole.writeLine(lineOne.length);
+            jsConsole.writeLine(lineTwo.length);
+            jsConsole.writeLine(lineThree.length);
+            if (canFormTriangle(lineOne, lineTwo, lineThree)) {
+                jsConsole.writeLine('The three lines can form a triangle');
+            }
+            else {
+                jsConsole.writeLine('The three lines can\'t form a triangle');
+            }
+        }
+
+        test();
+
+    </script>
+</body>
+</html>

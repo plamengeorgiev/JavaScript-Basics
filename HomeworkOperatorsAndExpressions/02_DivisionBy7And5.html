@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Division by 7 and 5</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="number">Enter a number:</label>
+    <input type="text" id="number" />
+    <button onclick="divisionCheck()">Division Check</button>
+    <div id="js-console" class="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function divisionCheck() {
+            var a = parseInt(number.value);
+            // input validation
+            if (isNaN(a)) {
+                jsConsole.writeLine('Invalid Number!');
+            }
+            else {
+                if (a % 5 == 0 && a % 7 == 0) {
+                    jsConsole.writeLine("The number can be divided by 7 and by 5");
+                }
+                else {
+                    jsConsole.writeLine("The number can't be divided by 7 and by 5");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

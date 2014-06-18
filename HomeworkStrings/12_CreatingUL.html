@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Creating UL</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function generateList(people, template) {
+            var replaced = [];
+            var row;
+
+            for (var i = 0; i < people.length; i++) {
+                row = template.replace(/[-{ }-]/g, '');
+
+                for (var prop in people[i]) {
+                    row = row.replace(prop, people[i][prop]);
+                }
+
+                replaced.push(row);
+            }
+
+            var result = '<ul><li>';
+            result += replaced.join('</li><li>');
+            result += '</li></ul>';
+
+            return result;
+        }
+
+        function test() {
+            var tmpl = '<strong>-{name}-</strong> <span>-{age}-</span>';
+
+            var people = [{ name: 'Pesho', age: 24 },
+                            { name: 'Gosho', age: 30 },
+                            { name: 'Petkan', age: 20 },
+                            { name: 'Dragan', age: 21 }
+            ];
+
+            var peopleList = generateList(people, tmpl);
+
+            jsConsole.writeLine(peopleList);
+        }
+        test();
+    </script>
+</body>
+</html>
